@@ -35,20 +35,27 @@
 const getImage = async() => {
 
 
-const apiKey = 'Okd68a6g2I5O1UI0HAwSl40aq49fJdoJ';
-const resp = await fetch (`https://api.giphy.com/v1/gifs/random?api_key=${ apiKey }`); //es de tipo response. espera que esta promesa termine antes que ejecute la siguiente linea de codigo
-const { data } = await resp.json();
+    try {
+        const apiKey = 'Okd68a6g2I5O1UI0HAwSl40aq49fJdoJ';
+        const resp = await fetch (`https://api.giphy.com/v1/gifs/random?api_key=${ apiKey }`); //es de tipo response. espera que esta promesa termine antes que ejecute la siguiente linea de codigo
+        const { data } = await resp.json();
 
-const { url } = data.images.original;
+        const { url } = data.images.original;
 
-const img = document.createElement('img');
-img.src = url;
-document.body.append(img);
+        const img = document.createElement('img');
+        img.src = url;
+        document.body.append(img);
 
 }
+        
+     catch (error) {
+        //manejo del error
+    }
 
 
-getImage();
+
+}
+     getImage();
 
 
 
